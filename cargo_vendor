@@ -135,7 +135,11 @@ def do_cargo_vendor(srcdir, srctar, outdir, cargotoml, update=True, compression=
     if srcdir and srctar:
         log.error("I'm confused 🥺 - can't work with both a srctar and srcdir!")
         return False
-
+    
+    if srcdir is None and srctar is None:
+        log.error("I'm confused 🥺 - can't work with at least one of srctar or srcdir!")
+        return False
+    
     if compression is None:
         compression = "zst"
 
